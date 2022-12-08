@@ -87,8 +87,3 @@ If you have any thoughts, questions, suggestions, opinions, feature requests etc
 Check [open issues](https://github.com/vadasambar/kico/issues) (I am still refining them). Please comment `@vadasambar` on the issue if you find it interesting. 
 
 Feel free to open a PR/issue if you are interested in contributing. `kico` follows [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages.
-
----
-# Before making public
-- [ ] Release binaries
-- [ ] Squash commits
