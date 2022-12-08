@@ -113,10 +113,10 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.Flags().StringP("namespace", "n", "", "Namespace where the pod exists (default: uses current namespace")
-	rootCmd.Flags().BoolP("suggest-netpol", "s", false, "Suggests a NetworkPolicy if the flag is set (default: false")
-	rootCmd.Flags().IntP("concurrency", "c", defaultConcurrency, "Sets concurrency for processing logs (default: 4)")
-	rootCmd.Flags().StringP("wait-for-logs", "w", defaultWaitDurationForLogs, "Waits for relevant logs to appear (default: 60s")
+	rootCmd.Flags().StringP("namespace", "n", "", "Namespace where the pod exists (default uses current namespace)")
+	rootCmd.Flags().BoolP("suggest-netpol", "s", false, "Suggests a NetworkPolicy if the flag is set (default false)")
+	rootCmd.Flags().IntP("concurrency", "c", defaultConcurrency, "Sets concurrency for processing logs")
+	rootCmd.Flags().StringP("wait-for-logs", "w", defaultWaitDurationForLogs, "Waits for relevant logs to appear")
 }
 
 func run(toPodName string, toPodNamespace string, suggestNetPol bool, concurrency int, waitForLogs time.Duration) error {
