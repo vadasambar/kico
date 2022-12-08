@@ -4,7 +4,7 @@
 <img src="./docs/architecture/kico.excalidraw.png">
 
 ## Quickstart
-1. Download the binaries from the release page.
+1. Download the binaries from [the release page](https://github.com/vadasambar/kico/releases).
 2. Enable logging for CoreDNS by enabling `log` (built-in) plugin in `coredns` ConfigMap in `kube-system` namespace.
 ```
 kubectl edit configmap coredns -n kube-system
