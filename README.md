@@ -1,4 +1,10 @@
-# Kico
+<p align="center">
+  <img src="./images/logo_plain.svg" height=200>
+</p>
+
+
+---
+
 `kico` shows incoming connections to your pod(s) from other pods and suggests a NetworkPolicy to allow those connections
 
 <img src="./docs/architecture/kico.excalidraw.png">
