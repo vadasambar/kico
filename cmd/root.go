@@ -77,14 +77,14 @@ status: {}
 		waitForLogs, err := cmd.Flags().GetString("wait-for-logs")
 		if err != nil {
 			log.Printf("err: %v error parsing `wait-for-logs` flag", err)
-			log.Printf("defaulting to %d", defaultWaitDurationForLogs)
+			log.Printf("defaulting to %s", defaultWaitDurationForLogs)
 			waitForLogs = defaultWaitDurationForLogs
 		}
 
 		waitDuration, err := time.ParseDuration(waitForLogs)
 		if err != nil {
 			log.Printf("err: %v error parsing time duration specified for `wait-for-logs` flag", err)
-			log.Printf("defaulting to %d", defaultWaitDurationForLogs)
+			log.Printf("defaulting to %s", defaultWaitDurationForLogs)
 			waitDuration = time.Second * 60
 		}
 
