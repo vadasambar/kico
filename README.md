@@ -32,17 +32,17 @@ Usage:
   kico <pod-name> [flags]
 
 Flags:
-  -c, --concurrency int        Sets concurrency for processing logs (default: 4) (default 4)
+  -c, --concurrency int        Sets concurrency for processing logs (default 4)
   -h, --help                   help for kico
-  -n, --namespace string       Namespace where the pod exists (default: uses current namespace
-  -s, --suggest-netpol         Suggests a NetworkPolicy if the flag is set (default: false
+  -n, --namespace string       Namespace where the pod exists (default uses current namespace)
+  -s, --suggest-netpol         Suggests a NetworkPolicy if the flag is set (default false)
   -t, --toggle                 Help message for toggle
-  -w, --wait-for-logs string   Waits for relevant logs to appear (default: 60s (default "60s")
+  -w, --wait-for-logs string   Waits for relevant logs to appear (default "60s")
 ```
 ## Good to know
 1. Mentioning `<pod-name>` in `kico <pod-name>` command is just give the users convenience of specfiying a `<pod-name>` instead of finding the service name (extra work). `kico` uses `<pod-name>` to figure out the Kubernetes Service name (`<pod-name>` has no use outside this). So, if a K8s Service points to `<pod-name-1>`, `<pod-name-2>`.. and so on,  you can use any of the pod names in the command e.g., `kico <pod-name-1/2/3..>`
 2. `kico` ignores `pod-template-hash` label on pods because it is not useful in creating the K8s `NetworkPolicy` resource.
-3. `kico` by default waits for 60s for the relevant connection logs printed by the `log` CoreDNS plugin. It gives up and exists after 60s. This time duration is configurable using `--wait-duration` flag (check [Supported Flags](#supported-flags)).
+3. `kico` by default waits for 60s for the relevant connection logs from the `log` CoreDNS plugin. It gives up and exits after 60s. This time duration is configurable using `--wait-duration` flag (check [Supported Flags](#supported-flags)).
 4. You can set log level of `kico` using `LOG_LEVEL` environment variable
 ```
 LOG_LEVEL=debug kico user-db-b8dfb847c-wvkgf -nsock-shop
@@ -80,10 +80,26 @@ First part shows invalid configuration, second part shows core-dns reloading fix
 _"[`Note that for busy servers logging will incur a performance hit.`](https://coredns.io/plugins/log/)"_
 - `kico` figures out the incoming connections based on the logs. If there were some connections which were not logged in CoreDNS e.g., connections which directly connect using target pod IP or if CoreDNS pod restarts, `kico` can't show such connections because it uses CoreDNS logs.
 
-## Feedback
-If you have any thoughts, questions, suggestions, opinions, feature requests etc., [open an issue](https://github.com/vadasambar/kico/issues/new). I would love to hear your feedback. 
-
 ## Contribution
 Check [open issues](https://github.com/vadasambar/kico/issues) (I am still refining them). Please comment `@vadasambar` on the issue if you find it interesting. 
 
 Feel free to open a PR/issue if you are interested in contributing. `kico` follows [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages.
+
+### Development
+1. Clone the github repo
+```
+git clone git@github.com:vadasambar/kico.git
+```
+2. Build using (from the root folder):
+```
+go build -race -o kico
+```
+or 
+```
+go run -race main.go
+```
+3. Make changes
+4. Open a PR
+
+## Feedback
+If you have any thoughts, questions, suggestions, opinions, feature requests etc., [open an issue](https://github.com/vadasambar/kico/issues/new). I would love to hear your feedback. 
